@@ -9,13 +9,14 @@ class Review:
         self.viewer = viewer
         self.movie = movie
         self.rating = rating
-        Review.all.append(self)
+        type(self).all.append(self)
 
-    # Review-Rating getter and setter
+    # Review - rating getter/setter
     @property
     def rating(self):
         return self._rating
 
+    # Ratings must be ints between 1-5, inclusive:
     @rating.setter
     def rating(self, rating):
         if isinstance(rating, int) and 1 <= rating <= 5:
@@ -23,11 +24,12 @@ class Review:
         else:
             raise Exception
 
-    # Review-Viewer getter and setter
+    # Review - viewer getter/setter
     @property
     def viewer(self):
         return self._viewer
 
+    # Viewers must be Viewer instances. Raise exception:
     @viewer.setter
     def viewer(self, viewer):
         if isinstance(viewer, Viewer):
@@ -35,11 +37,12 @@ class Review:
         else:
             raise Exception
 
-    # Review-Movie getter and setter
+    # Review - movie getter/setter
     @property
     def movie(self):
         return self._movie
 
+    # Movie must be movie instances. Raise exception:
     @movie.setter
     def movie(self, movie):
         if isinstance(movie, Movie):
